@@ -6,7 +6,7 @@ import FontSelect from './FontSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
-import { COLORS, PRESETS } from '../lib/constants'
+import { COLORS } from '../lib/constants'
 import { toggle, formatCode } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
@@ -369,7 +369,7 @@ class Settings extends React.PureComponent {
 
   render() {
     const { isVisible, selectedMenu, showPresets } = this.state
-    const { updatePreset } = this.props
+    const { updatePreset, presets } = this.props
 
     return (
       <div className="settings-container">
@@ -384,7 +384,7 @@ class Settings extends React.PureComponent {
           <Presets
             show={showPresets}
             toggle={this.togglePresets}
-            presets={PRESETS}
+            presets={presets}
             update={updatePreset}
           />
           <div className="settings-bottom">
