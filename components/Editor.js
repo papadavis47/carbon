@@ -264,6 +264,7 @@ class Editor extends React.Component {
     }
   }
 
+  // eslint-disable-next-line
   updatePreset = ({ name, custom, ...settings }) => this.setState({ preset: name, ...settings })
 
   render() {
