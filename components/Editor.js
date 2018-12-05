@@ -264,6 +264,8 @@ class Editor extends React.Component {
     }
   }
 
+  updatePreset = ({ name, custom, ...settings }) => this.setState({ preset: name, ...settings })
+
   render() {
     const {
       loading,
@@ -329,6 +331,7 @@ class Editor extends React.Component {
               {...config}
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
+              updatePreset={this.updatePreset}
             />
             <div className="buttons">
               {this.props.api.tweet &&
