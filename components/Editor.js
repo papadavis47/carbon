@@ -35,7 +35,7 @@ import {
   PRESETS
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml, unescapeHtml } from '../lib/util'
+import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
@@ -271,6 +271,13 @@ class Editor extends React.Component {
   removePreset = index =>
     this.setState(({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }))
 
+  format = () =>
+    formatCode(this.state.code)
+      .then(this.updateCode)
+      .catch(() => {
+        // create toast here in the future
+      })
+
   render() {
     const {
       loading,
@@ -338,6 +345,7 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
               applyPreset={this.applyPreset}
               removePreset={this.removePreset}
+              format={this.format}
             />
             <div className="buttons">
               {this.props.api.tweet &&
